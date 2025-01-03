@@ -52,13 +52,13 @@ const Register = () => {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        background: `linear-gradient(135deg, 
-          #ffffff 0%,
-          #f5f5f5 25%,
-          #eeeeee 50%,
-          #e0e0e0 75%,
-          #bdbdbd 100%
-        )`,
+        background: theme => theme.palette.mode === 'dark' 
+          ? `linear-gradient(135deg, 
+              #1a237e 0%,
+              #121212 100%)`
+          : `linear-gradient(135deg, 
+              #e3f2fd 0%,
+              #bbdefb 100%)`,
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -68,7 +68,9 @@ const Register = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
+          background: theme => theme.palette.mode === 'dark'
+            ? 'radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0) 70%)'
+            : 'radial-gradient(circle at center, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)',
           pointerEvents: 'none'
         }
       }}
@@ -80,8 +82,12 @@ const Register = () => {
             p: 4,
             borderRadius: 2,
             backdropFilter: 'blur(10px)',
-            background: 'rgba(255, 255, 255, 0.95)',
-            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
+            background: theme => theme.palette.mode === 'dark'
+              ? 'rgba(30, 30, 30, 0.95)'
+              : 'rgba(255, 255, 255, 0.95)',
+            boxShadow: theme => theme.palette.mode === 'dark'
+              ? '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+              : '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
           }}
         >
           <Box
